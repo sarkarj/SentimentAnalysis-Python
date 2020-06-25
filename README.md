@@ -61,10 +61,14 @@ To install using pip (Python Package Installer)
     
 <img src="./Img/api-jn.png">
 
-Call the api running on localhost:5000
+
+HTTP POST request to the API running on localhost:5000
 
     curl --request POST --url http://localhost:5000/api/v1 --header 'content-type: application/json' --data '{"message":"The book was engaging, enjoyed reading, definitely recommending"}' 
     
+
 <img src="./Img/curl.png">
+
+Create a [app.py](./app.py
 
 ## Building [AWS EC2](https://console.aws.amazon.com/ec2/) model 
