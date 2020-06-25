@@ -28,7 +28,8 @@ To install using pip (Python Package Installer)
     classifier.predict(sentence)
     print('Sentence Score : ', sentence.labels)
 
-<img src>
+<img src="./Img/tb-flr.png">
+
 ## Selecting [flair](https://pypi.org/project/flair/) model and build an API
 
 ## Building [AWS EC2](https://console.aws.amazon.com/ec2/) model 
