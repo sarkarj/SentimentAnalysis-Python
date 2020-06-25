@@ -71,4 +71,7 @@ HTTP POST request to the API running on localhost:5000
 
 Create a [app.py](./app.py)
 
-## Building [AWS EC2](https://console.aws.amazon.com/ec2/) model 
+## Create an [AWS EC2](https://console.aws.amazon.com/ec2/) instance
+
+Launch an EC2 Instance using Ansible Playbook [yml](./aws-ec.yml). 
+Requirements - Ansible, Python , Boto and an AWS Account to Launch an EC2 instance.
