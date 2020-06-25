@@ -69,6 +69,6 @@ HTTP POST request to the API running on localhost:5000
 
 <img src="./Img/curl.png">
 
-Create a [app.py](./app.py
+Create a [app.py](./app.py)
 
 ## Building [AWS EC2](https://console.aws.amazon.com/ec2/) model 
