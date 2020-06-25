@@ -74,4 +74,67 @@ Create a [app.py](./app.py)
 ## Create an [AWS EC2](https://console.aws.amazon.com/ec2/) instance
 
 Launch an EC2 Instance using Ansible Playbook [yml](./aws-ec.yml). 
+
 Requirements - Ansible, Python , Boto and an AWS Account to Launch an EC2 instance.
+
+> **Note:** [Ansible](https://docs.ansible.com) automation engine will be used for [AWS EC2](https://aws.amazon.com/console/) provisioning and application deployment. Install Ansible for Mac (using Homebrew or Python pip Package Manager).
+
+    brew install ansible      
+or
+
+    pip3 install ansible  
+
+>  Install Boto with pip, ([Boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) is the Amazon Web Services (AWS) SDK for Python)
+
+    pip3 install boto
+
+>  Create a .boto file with the AWS account credentials in credentials.csv and save with permission 400 -> chmod 400 .boto so that, (U)ser / owner can read, can't write and can't execute
+
+    [Credentials]
+    aws_access_key_id = [Access key ID]
+    aws_secret_access_key = [Secret access key]
+
+> The deployment playbook - [aws-ec.yml](./aws-ec.yml)
+
+
+|    key          |    description                |
+|---------------- |-------------------------------|
+|`'gather_facts'` | gathers facts about remote hosts (boolean)|
+|`'key_name'`     | EC2 Console -> NETWORK & SECURITY -> Key pairs|
+|`'instance_type'`| t2.micro or t2.small|
+|`'image'`        | define an Amazon Machine Image (AMI)|
+|`'group'`        | define a security Group, EC2 Console -> NETWORK & SECURITY -> Security Groups|
+|`'count'`        | number of instances to launch|
+|`'vpc_subnet_id'`| From VPC - Select a Subnet ID in the Availability Zone|
+|`'wait'`         | playbook to wait for the instance to be launched and assign a public IP|
+
+Run the playbook - 
+
+    ansible-playbook aws-ec.yml
+    
+<img src="./Img/ansible-playbook-run.png">
+
+## Login to the EC2 instance and move the app.py over ssh
+
+
+To move the file to EC2 -
+          
+          scp -i "EC2KeyPair.pem" ./app.py ec2-user@ec2-18-188-202-24.us-east-2.compute.amazonaws.com:/home/ec2-user/app.py
+
+Connect to EC2 instance -
+
+					ssh -i "EC2KeyPair.pem" ec2-user@ec2-18-188-202-24.us-east-2.compute.amazonaws.com
+         
+<img src="./Img/ssh-ec2.png">
+
+## Configure Docker in EC2
+
+Update the installed packages and package cache and then install [docker] (https://docs.docker.com/get-docker/)	engine in EC2 instance
+
+    sudo yum update -y
+    sudo yum install docker
+    sudo service docker start  
+    sudo usermod -a -G docker ec2-user
+    
+Here adding the ec2-user to the docker group to execute docker commands without using sudo, then close the current terminal and log back in a new SSH session
+
