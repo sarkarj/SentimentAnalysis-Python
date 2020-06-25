@@ -29,7 +29,7 @@ To install using pip (Python Package Installer)
     print('Sentence Score : ', sentence.labels)
 
 
-<img src="./Img/ktb-flr.png"> 
+<img src="./Img/tb-flr.png"> 
 
 ## Selecting [flair](https://pypi.org/project/flair/) model and build an API
 
