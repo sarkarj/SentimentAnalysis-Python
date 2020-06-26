@@ -252,7 +252,7 @@ CLI (using curl) from local system
     
 <img src="./Img/clitoecs.png">
 
-Running [consumer.py] or from jupyter notebook in local system
+Running [consumer.py](./consumer.py) or from jupyter notebook in local system
 
 <img src="./Img/ecstojn.png">
 
