@@ -164,6 +164,8 @@ Check the docker image
     
 <img src="./Img/docker-image.png">
 
+## Run the docker container in EC2
+
 Run the image as a container (port 5000)
 
     docker run --name webapi -p 5000:5000 webapi
@@ -172,6 +174,20 @@ Run the image as a container (port 5000)
 
 Now, the container is created and running.
 
-    
+Let’s test using curl from the local system – (using EC2 IP 18.218.185.203, instead of localhost now).
 
+<img src="./Img/curl-fromec2.png">
 
+Write a python [consumer.py](./consumer.py) to test from the local system.
+
+    import requests
+    url = 'http://18.218.185.203:5000/api/v1'
+    msg = {'message':'The book was engaging, enjoyed reading, definitely recommending'}
+    response = requests.post(url, json = msg)
+    print(response.text)
+
+<img src="./Img/consumer.png">
+
+So, the micro-service API is containerized and deployed in AWS EC2 and running, also tested from a [consumer](./consumer.py) python app.
+
+## Push the image to Amazon Elastic Container Registry
