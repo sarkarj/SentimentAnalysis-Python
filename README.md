@@ -140,7 +140,7 @@ Create a [requirements.txt](/requirements.txt) for Flask and flair (two python m
     flair==0.5
     Flask==1.1.2
 
-Create a [Dockerfile](.Dockerfile) with the [Python](https://hub.docker.com/_/python) base image from the [docker hub](https://hub.docker.com) as a starting point, and the RUN command will reference from requirements.txt.
+Create a [Dockerfile](./Dockerfile) with the [Python](https://hub.docker.com/_/python) base image from the [docker hub](https://hub.docker.com) as a starting point, and the RUN command will reference from requirements.txt.
 
     FROM python:3
     COPY . /app
