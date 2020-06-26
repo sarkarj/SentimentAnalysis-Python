@@ -246,4 +246,8 @@ AWS created the resources for the service. Next click `'View service'`, go to `'
 
 <img src="./Img/ecstasks.png">
 
-Click `'ENI Id'` to get the Public IP
+Click `'ENI Id'` to get the Public IP. This will redirect to the AWS EC2 console and show an instance running in NETWORK & SECURITY -> Network Interfaces. Grab the `'IPv4 Public IP'`  address of that instance
+
+<img src="./Img/tasksid.png">
+
+
