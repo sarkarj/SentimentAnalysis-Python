@@ -174,11 +174,11 @@ Run the image `'webapi'` as a container `'webapi'` (port 5000)
 
 Now, the container is created and running.
 
-Let’s test using curl from the local system – (using EC2 IP 18.218.185.203, instead of localhost now).
+Let’s test using curl from the local system – (using EC2 IP `'18.218.185.203'`, instead of localhost now).
 
 <img src="./Img/curl-fromec2.png">
 
-Write a python [consumer.py](./consumer.py) to test from the local system.
+Write a python [consumer.py](./consumer.py) to test from the `'local'` system.
 
     import requests
     url = 'http://18.218.185.203:5000/api/v1'
@@ -190,9 +190,9 @@ Write a python [consumer.py](./consumer.py) to test from the local system.
 
 So, the micro-service API is containerized and deployed in AWS EC2 and running, also tested from a [consumer](./consumer.py) python app.
 
-## Push the image to Amazon Elastic Container Registry
+## Push the image to AWS Elastic Container Registry
 
-Set up `'aws configure'` in EC2 to run AWS CLI (from credentials.csv)
+Set up `'aws configure'` in EC2 to run AWS CLI (from the `'credentials.csv'`)
 
     aws configure
     
@@ -201,7 +201,7 @@ Set up `'aws configure'` in EC2 to run AWS CLI (from credentials.csv)
     Default region name : us-east-2
     Default output format : json
 
-Create an Amazon ECR repository `'webapi-repository'` to store the docker image
+Create an AWS ECR repository `'webapi-repository'` to store the docker image
 
     aws ecr create-repository --repository-name webapi-repository --region us-east-2
     
@@ -217,7 +217,7 @@ Tag the webapi image with the `'repositoryUri`' value from the previous step
 				
     docker tag webapi 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 
-Push the image to Amazon ECR with the `'repositoryUri`' value from the earlier step
+Push the image to AWS ECR with the `'repositoryUri`' value from the earlier step
 
     docker push 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 	
@@ -227,4 +227,6 @@ Container image is up in [AWS ECR](https://console.aws.amazon.com/ecs/)
 
 <img src="./Img/ecsapirepo.png">
 
+
+## Publish the container in AWS ECR cluster from AWS ECS console:
 
