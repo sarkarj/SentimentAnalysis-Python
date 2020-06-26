@@ -234,7 +234,7 @@ Update `'Edit container'` details to configure as below (`'Container'` and `'Tas
 
 Click `'Next'`, `'Next'`, and finish up by naming the cluster as `'webapi-cluster'`, and click `'Next'` and `'Create'`
 
-<img src="./Img/configecs-ct.png">
+<img src="./Img/viewservice.png">
 
 AWS created the resources for the service. Next click `'View service'`, go to `'Tasks'` tab and click on the `'task ID'`
 
