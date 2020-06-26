@@ -205,9 +205,27 @@ Create an Amazon ECR repository `'webapi-repository'` to store the docker image
 
     aws ecr create-repository --repository-name webapi-repository --region us-east-2
     
-<<img src="./Img/webapi-repository.png">    
+<img src="./Img/webapi-repository.png">    
 
 Run the AWS ECR get-login-password, specify the registry URI to authenticate to, and retrieve an authentication token to authenticate the docker client to the registry.
 
     aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 212487149830.dkr.ecr.us-east-2.amazonaws.com
     
+<img src="./Img/ecrtoken.png">
+
+Tag the webapi image with the repositoryUri value from the previous step
+				
+				docker tag webapi 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
+
+Push the image to Amazon ECR with the repositoryUri value from the earlier step
+
+				docker push 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
+	
+<img src="./Img/dockerpush.png">
+
+Container image is up in [AWS ECR](https://console.aws.amazon.com/ecs/)
+
+<img src="./Img/ecsapirepo.png">
+
+<img src="./Img/ecrtoken.png">
+
