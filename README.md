@@ -244,7 +244,7 @@ Click `'ENI Id'`, this will redirect to the AWS EC2 console and show an instance
 
 <img src="./Img/tasksid.png">
 
-## Test the API hosted in AWS ECS (`'IPv4 Public IP'`) from local
+## Test the API hosted in AWS ECS from local
 
 CLI (using curl) from local system
 
