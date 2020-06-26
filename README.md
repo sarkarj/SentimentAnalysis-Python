@@ -154,7 +154,7 @@ Create a [Dockerfile](.Dockerfile) with the [Python](https://hub.docker.com/_/py
     EXPOSE 5000
     CMD python3 ./app.py
     
-Build the docker image from the Dockerfile and requirements.txt
+Build the docker image `'webapi'` from the Dockerfile and requirements.txt
 
     docker build -t webapi .
     
@@ -166,7 +166,7 @@ Check the docker image
 
 ## Run the docker container in EC2
 
-Run the image as a container (port 5000)
+Run the image `'webapi'` as a container `'webapi'` (port 5000)
 
     docker run --name webapi -p 5000:5000 webapi
     
@@ -200,3 +200,14 @@ Set up `'aws configure'` in EC2 to run AWS CLI (from credentials.csv)
     AWS Secret Access Key : 
     Default region name : us-east-2
     Default output format : json
+
+Create an Amazon ECR repository `'webapi-repository'` to store the docker image
+
+    aws ecr create-repository --repository-name webapi-repository --region us-east-2
+    
+<<img src="./Img/webapi-repository.png">    
+
+Run the AWS ECR get-login-password, specify the registry URI to authenticate to, and retrieve an authentication token to authenticate the docker client to the registry.
+
+    aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 212487149830.dkr.ecr.us-east-2.amazonaws.com
+    
