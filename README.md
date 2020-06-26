@@ -85,7 +85,7 @@ or
 
     pip3 install boto
 
->  Create a .boto file with the AWS account credentials in credentials.csv and save with permission 400 -> chmod 400 .boto so that, (U)ser / owner can read, can't write and can't execute
+>  Create a `'.boto'` file with the AWS account credentials in credentials.csv and save with permission 400 -> chmod 400 .boto so that, (U)ser / owner can read, can't write and can't execute
 
     [Credentials]
     aws_access_key_id = [Access key ID]
