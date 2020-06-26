@@ -213,13 +213,13 @@ Run the AWS ECR get-login-password, specify the registry URI to authenticate to,
     
 <img src="./Img/ecrtoken.png">
 
-Tag the webapi image with the repositoryUri value from the previous step
+Tag the webapi image with the `'repositoryUri`' value from the previous step
 				
-				docker tag webapi 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
+    docker tag webapi 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 
-Push the image to Amazon ECR with the repositoryUri value from the earlier step
+Push the image to Amazon ECR with the `'repositoryUri`' value from the earlier step
 
-				docker push 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
+    docker push 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 	
 <img src="./Img/dockerpush.png">
 
@@ -227,5 +227,4 @@ Container image is up in [AWS ECR](https://console.aws.amazon.com/ecs/)
 
 <img src="./Img/ecsapirepo.png">
 
-<img src="./Img/ecrtoken.png">
 
