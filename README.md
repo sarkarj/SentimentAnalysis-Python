@@ -213,20 +213,37 @@ Run the AWS ECR get-login-password, specify the registry URI to authenticate to,
     
 <img src="./Img/ecrtoken.png">
 
-Tag the webapi image with the `'repositoryUri`' value from the previous step
+Tag the webapi image with the `'repositoryUri'` value from the previous step
 				
     docker tag webapi 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 
-Push the image to AWS ECR with the `'repositoryUri`' value from the earlier step
+Push the image to AWS ECR with the `'repositoryUri'` value from the earlier step
 
     docker push 212487149830.dkr.ecr.us-east-2.amazonaws.com/webapi-repository
 	
 <img src="./Img/dockerpush.png">
 
-Container image is up in [AWS ECR](https://console.aws.amazon.com/ecs/)
+Container image is up in [AWS ECS](https://console.aws.amazon.com/ecs/)
 
 <img src="./Img/ecsapirepo.png">
 
 
-## Publish the container in AWS ECR cluster from AWS ECS console:
+## Publish the container in AWS ECR cluster from [AWS ECS](https://console.aws.amazon.com/ecs/) console
 
+Navigate to the `'Clusters tab'`, click  `'Get Started'`, select `'Configure'`
+
+<img src="./Img/configecs.png">
+
+Update `'Edit container'` details to configure as below (`'Container'` and `'Task both'`)
+
+<img src="./Img/configecs-ct.png">
+
+Click `'Next'`, `'Next'`, and finish up by naming the cluster as `'webapi-cluster'`, and click `'Next'` and `'Create'`
+
+<img src="./Img/configecs-ct.png">
+
+AWS created the resources for the service. Next click `'View service'`, go to `'Tasks'` tab and click on the `'task ID'`
+
+<img src="./Img/ecstasks.png">
+
+Click `'ENI Id'` to get the Public IP
