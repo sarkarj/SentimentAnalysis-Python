@@ -28,7 +28,6 @@ To install using pip (Python Package Installer)
     classifier.predict(sentence)
     print('Sentence Score : ', sentence.labels)
 
-
 <img src="./Img/tb-flr.png"> 
 
 ## Using the [flair](https://pypi.org/project/flair/) model and build an API with [Flask](https://pypi.org/project/Flask/)
@@ -61,12 +60,10 @@ To install using pip (Python Package Installer)
     
 <img src="./Img/api-jn.png">
 
-
 HTTP POST request to the API running on localhost:5000
 
     curl --request POST --url http://localhost:5000/api/v1 --header 'content-type: application/json' --data '{"message":"The book was engaging, enjoyed reading, definitely recommending"}' 
     
-
 <img src="./Img/curl.png">
 
 Create a [app.py](./app.py)
@@ -95,7 +92,6 @@ or
     aws_secret_access_key = [Secret access key]
 
 > The deployment playbook - [aws-ec.yml](./aws-ec.yml)
-
 
 |    key          |    description                |
 |---------------- |-------------------------------|
@@ -143,7 +139,6 @@ Create a [requirements.txt](/requirements.txt) for Flask and flair (two python m
 
     flair==0.5
     Flask==1.1.2
-
 
 Create a [Dockerfile](.Dockerfile) with the [Python](https://hub.docker.com/_/python) base image from the [docker hub](https://hub.docker.com) as a starting point, and the RUN command will reference from requirements.txt.
 
@@ -227,7 +222,6 @@ Container image is up in [AWS ECS](https://console.aws.amazon.com/ecs/)
 
 <img src="./Img/ecsapirepo.png">
 
-
 ## Publish the container in AWS ECR cluster from [AWS ECS](https://console.aws.amazon.com/ecs/) console
 
 Navigate to the `'Clusters tab'`, click  `'Get Started'`, select `'Configure'`
@@ -250,4 +244,17 @@ Click `'ENI Id'` to get the Public IP. This will redirect to the AWS EC2 console
 
 <img src="./Img/tasksid.png">
 
+## Test the API hosted in AWS ECS (`'IPv4 Public IP'`) from local
+
+CLI (using curl) from local system
+
+    curl --request POST --url http://18.217.83.127:5000/api/v1 --header 'content-type: application/json' --data '{"message":"The book was engaging, enjoyed reading, definitely recommending"}' 
+    
+<img src="./Img/clitoecs.png">
+
+Running [consumer.py] or from jupyter notebook in local system
+
+<img src="./Img/ecstojn.png">
+
+We’ve deployed a containerized ML API using Python, Flask, Flair, Ansible, Docker in AWS ECS!
 
