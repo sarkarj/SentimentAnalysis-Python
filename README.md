@@ -116,18 +116,17 @@ Run the playbook -
 
 ## Login to the EC2 instance and move the app.py over ssh
 
-
 To move the file to EC2 -
           
-          scp -i "EC2KeyPair.pem" ./app.py ec2-user@ec2-18-188-202-24.us-east-2.compute.amazonaws.com:/home/ec2-user/app.py
+    scp -i "EC2KeyPair.pem" ./app.py ec2-user@ec2-18-218-185-203.us-east-2.compute.amazonaws.com:/home/ec2-user/app.py
 
 Connect to EC2 instance -
 
-					ssh -i "EC2KeyPair.pem" ec2-user@ec2-18-188-202-24.us-east-2.compute.amazonaws.com
+    ssh -i "EC2KeyPair.pem" ec2-user@ec2-18-218-185-203.us-east-2.compute.amazonaws.com
          
 <img src="./Img/ssh-ec2.png">
 
-## Configure Docker in EC2
+## Configure docker in EC2
 
 Update the installed packages and package cache and then install [docker] (https://docs.docker.com/get-docker/)	engine in EC2 instance
 
@@ -136,5 +135,43 @@ Update the installed packages and package cache and then install [docker] (https
     sudo service docker start  
     sudo usermod -a -G docker ec2-user
     
-Here adding the ec2-user to the docker group to execute docker commands without using sudo, then close the current terminal and log back in a new SSH session
+Here adding the ec2-user to the docker group to execute docker commands without using sudo, then close the current terminal and log back in a new SSH session.
+
+## Create a docker image in EC2
+
+Create a [requirements.txt](/requirements.txt) for Flask and flair (two python modules used in app.py)
+
+    flair==0.5
+    Flask==1.1.2
+
+
+Create a [Dockerfile](.Dockerfile) with the [Python](https://hub.docker.com/_/python) base image from the [docker hub](https://hub.docker.com) as a starting point, and the RUN command will reference from requirements.txt.
+
+    FROM python:3
+    COPY . /app
+    WORKDIR /app
+    RUN pip3 --no-cache-dir install -r requirements.txt
+    EXPOSE 5000
+    CMD python3 ./app.py
+    
+Build the docker image from the Dockerfile and requirements.txt
+
+    docker build -t webapi .
+    
+Check the docker image
+
+    docker image ls
+    
+<img src="./Img/docker-image.png">
+
+Run the image as a container (port 5000)
+
+    docker run --name webapi -p 5000:5000 webapi
+    
+<img src="./Img/docker-container.png">
+
+Now, the container is created and running.
+
+    
+
 
