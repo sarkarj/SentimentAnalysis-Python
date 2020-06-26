@@ -191,3 +191,12 @@ Write a python [consumer.py](./consumer.py) to test from the local system.
 So, the micro-service API is containerized and deployed in AWS EC2 and running, also tested from a [consumer](./consumer.py) python app.
 
 ## Push the image to Amazon Elastic Container Registry
+
+Set up `'aws configure'` in EC2 to run AWS CLI (from credentials.csv)
+
+    aws configure
+    
+    AWS Access Key ID : 
+    AWS Secret Access Key : 
+    Default region name : us-east-2
+    Default output format : json
