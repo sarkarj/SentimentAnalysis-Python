@@ -81,7 +81,7 @@ or
 
     pip3 install ansible  
 
->  Install Boto with pip, ([Boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) is the Amazon Web Services (AWS) SDK for Python)
+>  Install Boto with pip, ([Boto](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) is the AWS SDK for Python)
 
     pip3 install boto
 
